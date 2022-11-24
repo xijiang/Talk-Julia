@@ -153,11 +153,55 @@ Start Julia and type the codes below.
 ```julia
 cd("/Users/your-user-name/OneDrive/Desktop")
 # enter the Pkg mode by typing ]
-generate Breeding
-activate Breeding
+generate Breeding.jl
+activate Breeding.jl
 # type <backspace> to go back to REPL
 cd("Breeding")
 edit(".")   # invokes vscode
 ```
 
-The results of above
+The results of above will create a file structure below:
+
+- Breeding
+  - Project.toml
+  - src
+    - Breeding.jl
+
+The `Project.toml` contains:
+
+```toml
+name = "Breeding"
+uuid = "58d5f77a-a34c-41a6-9034-8871e005f1eb"
+authors = ["Xijiang Yu <xijiang@users.noreply.github.com>"]
+version = "0.1.0"
+```
+
+With the minimal initiation, our project description in `Project.toml`
+is also minimal.  This file also defines the environmments
+this package requires.  The environment is loaded by `activate` function
+in `Pkg`.  If the environments of a complicated package are not met on 
+your computer, you can use the `instantiate` function to download the
+required packages.
+
+The file `Breeding.jl` in `src` directory contains:
+
+```julia
+module Breeding
+
+greet() = print("Hello World!")
+
+end # module Breeding
+```
+
+We can see the module `Breeding` has one simple function `greet`.
+
+Type `<ctrl> + <shift> + p` in VSCode to run pellate Julia:REPL.
+In the REPL:
+
+```julia
+Breeding.greet()
+# Hello World!
+```
+
+You can try to add some docstring to this function. 
+You can also add more functions.
