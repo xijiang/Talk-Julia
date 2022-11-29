@@ -116,6 +116,12 @@ You can download git with `winget` also:
  winget install --id Git.Git -e --source winget 
  ```
 
+### To upgrade everything
+
+```bash
+winget upgrade --all
+```
+
 ## A routine to develop Julia codes
 
 When you start Julia, you will automatically enter the Julia REPL,
@@ -196,7 +202,7 @@ end # module Breeding
 We can see the module `Breeding` has one simple function `greet`.
 
 Type `<ctrl> + <shift> + p` in VSCode to run pellate Julia:REPL.
-In the REPL:
+Then in the REPL:
 
 ```julia
 Breeding.greet()
