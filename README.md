@@ -1,8 +1,8 @@
 ---
-title: A summary of my Talk Julia
-author: Xijiang Yu
-institute: IHA, NMBU
-date: 2022, \AA s
+Title: A summary of my Talk Julia
+Author: Xijiang Yu
+Institute: IHA, NMBU
+Date: 2022, \AA s
 ---
 
 ## Introduction
@@ -78,6 +78,9 @@ ssh-keygen
 
 This command will then ask you where to save the key.
 The default location on Windows is `C:\Users\your-username\.ssh\id_rsa`.
+For other users, e.g., Linux and Mac users, this is `~/.ssh`.
+Let's call this the ssh directory.
+
 You can just press `<enter>` here.
 It will then ask you whether to have a passphrase for the private key.
 I strongly recommend you to add one.
@@ -85,16 +88,31 @@ Note, a passphrase can be more complicated than a password.
 You can use a whole sentence as a passphrase.
 This is a reason why key pairs are more secure than password systems.
 
-When the key pairs are created, you can visit 
+When the key pairs are created, you can visit
 [GitHub](https://github.com/settings/keys).
 You click `New SSH key` butten, give the key a name and paste content of `id_rsa.pub`
 into the input box and save it.
 
 You can also use this key pair to login a remote (Linux) server.
-The command is:
+To make life easier, you can make a `config` file in the ssh directory with the contents below,
+
+```config
+Host  some-unique-lowercase-easy-to-remember-name, call it xy here
+	HostName    ip-address/domain-name, e.g., 10.230.41.59/nmbu.org
+	User        your-username-on-the-remote-domain
+```
+
+For Linux alike users, the command is:
 
 ```bash
 ssh-copy-id user@remote-server
+```
+
+For windows users, as there is no `ssh-copy-id` command, we can just the `ssh` command.
+
+```bash
+cd C:\Users\your-windows-username\.ssh
+type id_rsa.pub | ssh xy "cat >> ~/.ssh/authorized_keys"
 ```
 
 When the pair process is done, you will seldom need the passwords
@@ -121,6 +139,19 @@ You can download git with `winget` also:
 ```bash
 winget upgrade --all
 ```
+
+## Using vscode
+
+When you install vscode on your Windows or Linux machine,
+the command `code` will be in your `PATH`.
+This means that if you run `code` either in `CMD` or a terminal,
+vscode can be invoded.
+For Mac users, you might have to add command `code` into your
+`PATH` manually.
+
+### Edit a remote directory/file with vscode
+
+Open a terminal, or `CMD`.
 
 ## A routine to develop Julia codes
 
@@ -185,7 +216,7 @@ version = "0.1.0"
 With the minimal initiation, our project description in `Project.toml`
 is also minimal.  This file also defines the environmments
 this package requires.  The environment is loaded by `activate` function
-in `Pkg`.  If the environments of a complicated package are not met on 
+in `Pkg`.  If the environments of a complicated package are not met on
 your computer, you can use the `instantiate` function to download the
 required packages.
 
@@ -209,5 +240,7 @@ Breeding.greet()
 # Hello World!
 ```
 
-You can try to add some docstring to this function. 
+You can try to add some docstring to this function.
 You can also add more functions.
+
+### Start a package with `PkgTemplate`
