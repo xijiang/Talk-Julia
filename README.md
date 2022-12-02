@@ -115,6 +115,15 @@ cd C:\Users\your-windows-username\.ssh
 type id_rsa.pub | ssh xy "cat >> ~/.ssh/authorized_keys"
 ```
 
+If the file `authorized_keys` is newly created, you need to be sure that its file
+property is 600. If not,
+
+```bash
+chmod 600 ~/.ssh/authorized_keys
+```
+
+Or, the key pairs won't work.
+
 When the pair process is done, you will seldom need the passwords
 for your remote servers, if it isn't not any more.
 
