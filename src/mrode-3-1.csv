@@ -1,0 +1,9 @@
+# Example 3.1, pp 37, Mrode
+# Linear Models for the Prediction of Animal Breeding Values
+# 3ed, 2014, CABI. Header is the 4th line
+Calves,Sex,Sire,Dam,WWG_kg
+4,Male,1,Unknown,4.5
+5,Female,3,2,2.9
+6,Female,1,2,3.9
+7,Male,4,5,3.5
+8,Male,3,6,5.0
